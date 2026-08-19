@@ -1,0 +1,10 @@
+# Muhit o'zgaruvchilari (maxfiy ma'lumotlar) — git-ga qo'shilmaydi
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# SQLite bazasi
+*.db
