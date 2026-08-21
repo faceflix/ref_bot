@@ -26,13 +26,30 @@ async def _send_referral(message: Message, bot: Bot) -> None:
         )
         return
 
+    from urllib.parse import quote
+    from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
     me = await bot.get_me()
     link = f"https://t.me/{me.username}?start={message.from_user.id}"
+    share_text = f"Bu bot orqali referral ball yig'aman! Qo'shiling: {link}"
+    share_url = f"https://t.me/share/url?url={quote(link)}&text={quote(share_text)}"
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="📤 Ulashish",
+                    url=share_url,
+                )
+            ],
+            *main_menu_inline().inline_keyboard,
+        ]
+    )
     await message.answer(
         "🔗 Sizning taklif havolangiz:\n\n"
         f"{link}\n\n"
         "Havolani do'stlaringizga yuboring — ular qo'shilganda siz ball olasiz!",
-        reply_markup=main_menu_inline(),
+        reply_markup=keyboard,
     )
 
 
