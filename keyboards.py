@@ -21,6 +21,33 @@ def main_menu() -> ReplyKeyboardMarkup:
     return keyboard
 
 
+def main_menu_inline() -> InlineKeyboardMarkup:
+    """Asosiy menyu tugmalarini InlineKeyboardMarkup (xabarga biriktirilgan) shaklida qaytaradi."""
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="🔗 Referral havola",
+                    callback_data="menu_referral",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="📊 Statistika",
+                    callback_data="menu_stats",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="🔓 Maxfiy kanal",
+                    callback_data="menu_private",
+                )
+            ],
+        ]
+    )
+    return keyboard
+
+
 def subscribe_keyboard() -> InlineKeyboardMarkup:
     """Kanalinga a'zo bo'lish uchun inline tugmalarni qaytaradi."""
     keyboard = InlineKeyboardMarkup(

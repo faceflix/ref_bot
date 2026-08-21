@@ -12,6 +12,12 @@ SUBSCRIBED_STATUSES = {"member", "administrator", "creator"}
 pending_referrals: dict[int, int] = {}
 
 
+def _progress_bar(count: int, required: int) -> str:
+    """Takliflar sonini ko'rsatadigan oddiy progress bar."""
+    filled = min(count, required)
+    return "▰" * filled + "▱" * (required - filled)
+
+
 async def is_subscribed(bot: Bot, user_id: int) -> bool:
     """Foydalanuvchi majburiy kanalga a'zo ekanligini tekshiradi.
 

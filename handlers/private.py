@@ -21,15 +21,9 @@ from texts import (
     PRIVATE_ACCESS_TEXT,
     SUBSCRIBE_TEXT,
 )
-from utils import is_subscribed
+from utils import is_subscribed, _progress_bar
 
 private_router = Router()
-
-
-def _progress_bar(count: int, required: int) -> str:
-    """Takliflar sonini ko'rsatadigan oddiy progress bar."""
-    filled = min(count, required)
-    return "▰" * filled + "▱" * (required - filled)
 
 
 @private_router.message(F.text == "🔓 Maxfiy kanal")

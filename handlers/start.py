@@ -2,7 +2,7 @@ from aiogram import Bot, Router
 from aiogram.filters import CommandObject, CommandStart
 from aiogram.types import Message
 
-from keyboards import main_menu, subscribe_keyboard
+from keyboards import main_menu, main_menu_inline, subscribe_keyboard
 from texts import (
     SUBSCRIBE_TEXT,
     WELCOME_BACK_TEXT,
@@ -56,15 +56,15 @@ async def start_handler(message: Message, command: CommandObject, bot: Bot) -> N
     if not new_user:
         await message.answer(
             WELCOME_BACK_TEXT.format(name=name),
-            reply_markup=main_menu(),
+            reply_markup=main_menu_inline(),
         )
     elif referred:
         await message.answer(
             WELCOME_REFERRED_TEXT.format(name=name),
-            reply_markup=main_menu(),
+            reply_markup=main_menu_inline(),
         )
     else:
         await message.answer(
             WELCOME_NEW_TEXT.format(name=name),
-            reply_markup=main_menu(),
+            reply_markup=main_menu_inline(),
         )
